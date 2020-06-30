@@ -15,7 +15,7 @@ class ProductController extends Controller
 {
     public function __construct(){
 
-        $this->middleware('auth:api')->except('index' , 'show');
+        $this->middleware('jwt')->except('index' , 'show');
     }
     /**
      * Display a listing of the resource.
@@ -54,6 +54,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->discount = $request->discount;
         $product->stock = $request->stock;
+        $product->user_id = auth()->user()->id;
 
         $product->save();
 

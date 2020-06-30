@@ -11,6 +11,12 @@ use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
+
+    public function __construct(){
+
+        $this->middleware('jwt')->except('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
